@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+    
+{% endblock %}
+
+{% block body %}
+    {{parent()}}
+<div class="container col-12">
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+        <h1 class="text-uppercase mt-5 text-secondary">Productos</h1>
+    </div>
+        <div class="row vh-90 justify-content-center align-align-items-center">
+            <div class="col-auto">
+                <div class="table-responsive">
+                    <table class="table text-white text-center" border="1px">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th scope="col">Nombre</th><th scope="col">Precio</th><th scope="col">Stock</th><th scope="col">Descripción</th><th scope="col">Foto</th><th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white text-dark">
+                                {% for producto in productos %}
+                                <tr>
+                                    <th scope="row">{{ producto.nombre }}</th><td>{{ producto.precio }}€</td><td>{{ producto.stock }}uds</td><td>{{ producto.descripcion }}</td><td><img src='imagenes/producto/{{producto.foto}}' height="50px" width="50px"/></td><td><a href="gestionProductosEditForm/{{producto.id}}"><img src="img/editar.png" height="20" width="20"></a> -- <img class="boton" id="{{producto.id}}" src="img/borrar.png" height="20" width="20"></td>
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="navigation">
+                        {{ knp_pagination_render(productos) }}
+                    </div>
+                </div>
+                <a href="gestionProductosForm" class="btn-secondary btn">Nuevo Producto</a>
+            </div>
+        </div>
+
+{% endblock %}

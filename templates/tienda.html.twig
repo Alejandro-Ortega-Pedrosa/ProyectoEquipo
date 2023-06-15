@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+   {{parent()}}
+
+   <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-uppercase text-primary bg-secondary">TIENDA OFICIAL</h1>
+            </div>
+        <div>
+            <div class="d-inline-block text-secondary py-1 px-4 mb-3 carrito">
+                <a class="text-secondary" href="/carrito"><img class="img-fluid" src='img/carrito.png' alt="" width="70" height="70"></a>
+            </div>
+            <p class="text-light totalCarrito"></p>
+        </div>
+        <div class="row g-4">
+
+    {% for producto in productos %}
+    
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item">
+                        <div class="overflow-hidden productoTienda" id="{{producto.id}}">
+                            <img class="img-fluid" src='imagenes/producto/{{producto.foto}}' alt="" width="300" height="200">
+                        </div>
+                        <div class="bg-primary text-center p-4">
+                            <h5 class="text-uppercase text-secondary">{{producto.nombre}}</h5>
+                            <span class="text-secondary">{{producto.precio}} €</span>
+                            </br><button class="bg-light text-secondary btn mt-2 detalles" name="{{producto.id}}">Detalles</button>
+                            <a class="bg-secondary text-primary btn mt-2" href="/compra/{{producto.id}}">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            
+    {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

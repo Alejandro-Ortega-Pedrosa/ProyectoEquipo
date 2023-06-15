@@ -1,0 +1,244 @@
+.navbar .navbar-nav .nav-link:hover, .navbar .navbar-nav .nav-link.active {
+  color: #d3b16f;
+}
+
+.text-danger {
+  color: red;
+}
+
+.team-item .team-social .btn {
+  display: inline-flex;
+  margin: 0 3px;
+  color: white;
+  background: #3c1352;
+}
+
+.team-item .team-social .btn:hover {
+  color: #3c1352;
+  background-color: #d3b16f;
+}
+
+.zonaE {
+  color: white;
+  align-content: center;
+}
+.zonaE_fondoN {
+  height: 50px;
+  width: 150px;
+  background-color: orange;
+  position: relative;
+}
+.zonaE_fondoS {
+  height: 50px;
+  width: 150px;
+  background-color: blue;
+  margin-top: 274px;
+  margin-left: 100px;
+  position: absolute;
+}
+.zonaE_preferencia {
+  height: 300px;
+  width: 50px;
+  background-color: red;
+  position: relative;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.zonaE_tribuna {
+  height: 300px;
+  width: 50px;
+  background-color: #0c7c00;
+  position: relative;
+  margin-left: 50px;
+}
+
+.cesped {
+  height: 200px;
+  width: 150px;
+  background-color: green;
+  margin-top: 74px;
+  margin-left: 100px;
+  background-image: url("../img/campo.jpg");
+  background-size: cover;
+  position: absolute;
+}
+
+.producto {
+  height: 200px;
+  width: 200px;
+  color: black;
+}
+
+.carrito {
+  margin-left: 20px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.text-white {
+  color: white;
+}
+
+form ul {
+  list-style: none;
+  color: #EB1616;
+  font-size: 14px;
+  padding: 0;
+}
+
+.disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/*CAMBIA LAS PROPIEDADES DE LOS ELEMENTOS DE DATE TABLE*/
+.dataTables_filter input {
+  color: white;
+}
+
+#idtabla_length select {
+  color: white;
+}
+
+/*PARA COLUMNAS IMPARES DE LAS TABLAS*/
+tr {
+  background-color: white;
+  color: #3c1352;
+}
+
+td {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*tr:nth-child(even){
+    background-color: rgb(182, 182, 182);
+}*/
+/* BARRA DE SCROLL */
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d3b16f;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(211, 178, 111, 0.8901960784);
+}
+
+/*ANIMACION CABECERA*/
+.up-header:hover {
+  transform: translateY(-5px);
+}
+
+/*EVENTOS*/
+.pasado {
+  border: 2px solid red;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/*CAMBIA LA POSICION DEL DIALOG*/
+.ui-dialog {
+  position: fixed !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: white;
+  box-shadow: 15px 5px 10px rgba(72, 82, 153, 0.2666666667);
+}
+.ui-dialog-titlebar {
+  background-color: #3c1352;
+  color: white;
+}
+.ui-dialog-titlebar-close {
+  background-image: url("../img/cerrar.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.formulario {
+  height: 600px;
+  width: 500px;
+}
+
+/*TEXTO EN MOVIMIENTO DEL BANNER*/
+.t-move {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+.btn-video {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 820px;
+}
+
+/*PAGINACION*/
+.pagination a {
+  color: white;
+}
+
+.pagination {
+  margin-bottom: 20px;
+}
+
+.first {
+  background-color: #3c1352;
+  color: white;
+  padding: 5px 5px;
+  border: 1px solid #d3b16f;
+}
+
+.previous {
+  background-color: #3c1352;
+  color: white;
+  padding: 5px 5px;
+  border: 1px solid #d3b16f;
+}
+
+.page {
+  background-color: #3c1352;
+  color: white;
+  padding: 5px 5px;
+  border: 1px solid #d3b16f;
+}
+
+.current {
+  background-color: #d3b16f;
+  color: #3c1352;
+  padding: 5px 5px;
+  border: 1px solid white;
+}
+
+.next {
+  background-color: #3c1352;
+  color: white;
+  padding: 5px 5px;
+  border: 1px solid #d3b16f;
+}
+
+.last {
+  background-color: #3c1352;
+  color: white;
+  padding: 5px 5px;
+  border: 1px solid #d3b16f;
+}/*# sourceMappingURL=miBootstrap.css.map */

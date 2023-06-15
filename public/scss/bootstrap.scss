@@ -1,0 +1,39 @@
+/******* Customized Bootstrap ********/
+
+$primary: #ffffff; 
+$secondary: #3c1352;
+$light: #d3b16f; 
+$dark: #ffffff; 
+
+$font-family-base: 'Roboto', sans-serif;
+
+$headings-font-family: 'Oswald', sans-serif;
+
+$body-bg: $dark;
+
+$body-color: $light;
+
+$headings-color: #3c1352;
+
+$headings-font-weight: 600;
+
+$display-font-weight: 600;
+
+$enable-responsive-font-sizes: true;
+
+$border-color: $light;
+
+$input-border-color: $border-color;
+
+$border-radius: 0px;
+
+$border-radius-sm: $border-radius;
+
+$border-radius-lg: $border-radius;
+
+$link-decoration: none;
+
+$enable-negative-margins: true;
+
+@import "bootstrap/scss/bootstrap";
+@import "miBootstrap.scss"

@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+
+    <!--MIS SCRIPTS-->
+    <script src="{{ asset('js/entradas.js') }}" type="text/javascript"></script>
+
+{% endblock %}
+
+{% block body %}
+   {{parent()}}
+
+   <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-uppercase text-primary bg-secondary">COMPRA ENTRADA</h1>
+            </div>
+        <div>
+        </div>
+        <div class="row g-4">
+    
+        <!--CAMPO DE FÚTBOL -->
+            <div class="zonaE_tribuna zonaE" name="15">
+                15€
+            </div>
+
+            <div class="zonaE_fondoN zonaE" name="5">
+                5€
+            </div>
+
+            <div class="cesped" id="{{id}}">
+            </div>
+
+            <div class="zonaE_fondoS zonaE" name="5">
+                5€
+            </div>
+
+            <div class="zonaE_preferencia zonaE" name="10">
+                10€
+            </div>
+
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item">
+                    <div class="bg-primary text-center p-5">
+                        <h5 class="text-uppercase  bg-secondary text-light local"></h5>
+                        <h5 class="text-uppercase text-secondary">-</h5>
+                        <h5 class="text-uppercase  bg-secondary text-light visitante"></h5>
+                    </div>
+                </div>
+            </div>
+
+    <div class="container col-5">
+        <div class="row vh-90 justify-content-center align-align-items-center">
+            <div class="col-auto p-5 bg-secondary">
+               
+                <form name="gesEntradas">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input class="nombre form-control bg-transparent" type="text">
+                            <label>Nombre y apellidos *<i class="fa fa-clock-o"></i></label>
+                            <div class="nombrelabel text-danger" style="display:none">
+                                <label>Porfavor, inserte un NOMBRE y APELLIDOS</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <input class="correo form-control bg-transparent" type="text">
+                            <label>Correo *<i class="fa fa-clock-o"></i></label>
+                            <div class="correolabel text-danger" style="display:none">
+                                <label>Porfavor, inserte el CORREO ELETRÓNICO</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label>Fecha y Hora <i class="fas fa-calendar"></i></label> 
+                        </br><label class="fechaYhora"></label>
+                    </div>
+                    <div class="col-12">
+                        <label class="precio"></label>
+                    </div>
+
+                    <div class="col-12">
+                        <div>
+                            <label class="text-primary miZona">NO HAY NINGUNA ZONA SELECCIONADA</label>
+                        </div>
+                    </div>
+                
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100 py-3">COMPRA TU ENTRADA</button>
+                    </div>
+                   
+                </div>
+            </form>
+                
+                </div>
+            </div>
+        </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

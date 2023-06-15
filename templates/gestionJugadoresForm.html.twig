@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{parent()}}
+    
+    
+    <div class="container col-5">
+        <div class="mb-4 mt-5"><a class="text-secondary" href="/">Home / </a><a class="text-secondary" href="/gestionJugadoresTabla">Jugadores / </a><a class="text-secondary" href="/gestionJugadoresForm"><u>Formulario</u></a></div>
+        <div class="row vh-90 justify-content-center align-align-items-center">
+            <div class="col-auto p-5 bg-secondary">
+                {{form_start (form)}}
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            {{ form_widget(form.nombre, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.nombre) }}
+                            {{ form_errors (form.nombre) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            {{ form_widget(form.posicion, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.posicion) }}
+                            {{ form_errors (form.posicion) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            {{ form_widget(form.lugarNacimiento, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.lugarNacimiento) }}
+                            {{ form_errors (form.lugarNacimiento) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            {{ form_widget(form.fechaNacimiento, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.fechaNacimiento) }}
+                            {{ form_errors (form.fechaNacimiento) }}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            {{ form_row(form.foto, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            {{ form_row(form.guardar, { 'label': 'Guardar' }) }}
+                        </div>
+                    </div>
+                </div>
+                {{form_end (form)}} 
+            </div>
+        </div>
+    </div>
+   
+{% endblock %}

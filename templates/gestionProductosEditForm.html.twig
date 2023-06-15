@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container col-5">
+        <div class="mb-4 mt-5"><a class="text-secondary" href="/">Home / </a><a class="text-secondary" href="/gestionProductosTabla">Productos / </a><a class="text-secondary" href="/gestionProductosForm"><u>Formulario</u></a></div>
+        <div class="row vh-90 justify-content-center align-align-items-center">
+            <div class="col-auto p-5 bg-secondary">
+            {{form_start (form)}}
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            {{ form_widget(form.nombre, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.nombre) }}
+                            {{ form_errors (form.nombre) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            {{ form_widget(form.precio, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.precio) }}
+                            {{ form_errors (form.precio) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            {{ form_widget(form.stock, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.stock) }}
+                            {{ form_errors (form.stock) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            {{ form_widget(form.descripcion, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                            {{ form_label(form.descripcion) }}
+                            {{ form_errors (form.descripcion) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating">
+                            {{ form_row(form.foto, {'attr': {'class': 'form-control bg-transparent'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <img src='/imagenes/producto/{{producto.foto}}' height="65px" width="65px"/>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            {{ form_row(form.guardar, { 'label': 'Guardar' }) }}
+                        </div>
+                    </div>
+                </div>
+            {{form_end (form)}} 
+        </div>
+    </div>
+
+    
+</div>
+{% endblock %}

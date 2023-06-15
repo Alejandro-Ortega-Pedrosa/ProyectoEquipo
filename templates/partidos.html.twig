@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('js/partidos.js') }}" type="text/javascript"></script>
+    
+{% endblock %}
+
+{% block body %}
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <h1 class="text-uppercase bg-secondary text-primary">Partidos</h1>
+            </div>
+                <div class="row g-4">
+        {% for partido in partidos %}
+                   
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="bg-primary text-center p-5 partido">
+                                <h5 class="text-uppercase  bg-secondary text-light">{{partido.local}}</h5>
+                                <h5 class="text-uppercase text-secondary resultado">{{partido.resultado}}</h5>
+                                <h5 class="text-uppercase  bg-secondary text-light">{{partido.visitante}}</h5>
+                                <span class="text-secondary fecha">{{partido.fecha}}</span>
+                                </br><span class="text-secondary">{{partido.hora}}</span>
+                                {% if partido.local == "Real Jaén CF"%}
+                                    </br><a class="bg-secondary text-primary btn mt-2" href="/entradas/{{partido.id}}">Comprar</a>   
+                                {% endif %}
+                               
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+        {% endfor %}
+                </div>
+        </div>
+    </div>
+
+{% endblock %}

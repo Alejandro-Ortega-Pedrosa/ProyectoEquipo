@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{parent()}}
+    
+{% endblock %}
+
+{% block body %}
+    {{parent()}}
+<div class="container col-12">
+    <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+        <h1 class="text-uppercase mt-5 text-secondary">Jugadores</h1>
+    </div>
+        <div class="row vh-90 justify-content-center align-align-items-center">
+            <div class="col-auto">
+                <div class="table-responsive">
+                    <table class="table text-white text-center" border="1px">
+                        <thead class="bg-primary">
+                            <tr>
+                                <th scope="col">Nombre</th><th scope="col">Posición</th><th scope="col">Lugar de Nacimiento</th><th scope="col">Fecha de Nacimiento</th><th scope="col">Foto</th><th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white text-dark">
+                                {% for jugador in jugadores %}
+                                <tr>
+                                    <th scope="row">{{ jugador.nombre }}</th><td>{{ jugador.posicion }}</td><td>{{ jugador.lugarNacimiento }}</td><td>{{ jugador.fechaNacimiento }}</td><td><img src='imagenes/jugador/{{jugador.foto}}' height="50px" width="50px"/></td><td><a href="gestionJugadoresEditForm/{{jugador.id}}"><img src="img/editar.png" height="20" width="20"></a> -- <img class="boton" id="{{jugador.id}}" src="img/borrar.png" height="20" width="20"></td>
+                                </tr>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <div class="navigation">
+                        {{ knp_pagination_render(jugadores) }}
+                    </div>
+                </div>
+                <a href="gestionJugadoresForm" class="btn-secondary btn">Nuevo Jugador</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
