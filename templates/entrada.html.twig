@@ -1,18 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-<div class="info">
-   <div>{{equipos}}</div>
-   <div>{{precio}}€</div>
-   <div>{{zona}}</div>
-   <div>{{fecha}}</div>
-   <div>{{hora}}</div>
-   <div>{{nombre}}</div>
-<div>
+{% block stylesheets %}
+    {{parent()}}
 
-<div class="escudo">
-   <img src='../img/escudo.png' height="100px" width="100px"/>
-<div>
+{% endblock %}
+
+{% block body %}
    
+    <div class="ticket">
+       <h1>Entrada {{equipos}}</h1>
+          <div class="ticket-info">
+            <p><span class="info-label">Partido:</span> {{equipos}}</p>
+            <p><span class="info-label">Fecha:</span> {{fecha}}</p>
+            <p><span class="info-label">Hora:</span> {{hora}}</p>
+            <p><span class="info-label">Nombre:</span> {{nombre}}</p>
+            <p><span class="info-label">Zona:</span> {{zona}}</p>
+         </div>
+         
+         <p class="disclaimer">Esta entrada es válida solo para el titular y es intransferible.</p>
+   </div>
+
 
 {% endblock %}

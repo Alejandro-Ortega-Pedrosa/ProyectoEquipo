@@ -18,7 +18,7 @@ $(function(){
     tbody.addClass("bg-white text-dark");
 
     $.each(data, function(i,v){
-        var nuevoTr="<tr><td>"+data[i].nombre+"</td><td>"+data[i].precio+"€</td><td>"+data[i].descripcion+"</td><td><img src='imagenes/producto/"+data[i].foto+"' height='100px' width='100px'/></td><td><select name='talla'></select></td><td><input type='checkbox' id="+data[i].id+"> </td></tr>";
+        var nuevoTr="<tr><td>"+data[i].nombre+"</td><td>"+data[i].precio+"€</td><td>"+data[i].descripcion+"</td><td><img src='imagenes/producto/"+data[i].foto+"' height='100px' width='100px'/></td><td><select name='talla'></select></td><td><input type='checkbox' id="+i+"> </td></tr>";
         
         tbody.append(nuevoTr);
     })
@@ -37,34 +37,25 @@ $(function(){
     $('input[type=checkbox]').on('change', function() {
 
         if ($(this).is(':checked') ) {
+            //GUARDO EL ID DEL CHECK QUE ES EL INDICE
             productosSeleccionados.push($(this).prop("id"));
 
-            /*
-                LE ATRIBULLO UN ID DEL PRODUCTO AL SELECT Y COJO EL SELECT SEGÚN EL ID ASIGNADO PREVIAMENTE 
-                DE ESE SELECT COJO EL VALOR Y LO AÑADO EN EL ARRAY DE TALLAS
-            */
 
-            tallaProducto.push($("[name='talla']").val());
+            tallaProducto.push($("[name='talla']").eq($(this).prop("id")).val());
         }else {
             productosSeleccionados=productosSeleccionados.filter(producto => producto != $(this).prop("id"));
         }
     });
 
 
-    //MANDA LAS INVITACIONES A LOS USUARIOS SELECCIONADOS
+    //BORRAR LOS PRODUCTOS SELECCIONADOS
     $(".borrar").click(function(){
 
         //RECORRE EL ARRAY DE SELECCIONADOS Y EL DE DATA SACANDO DE DATA LOS PRODUCTOS SELECCIONADOS
-        for(let i=0;i<data.length;i++){
-
-            for(let x=0;x<productosSeleccionados.length;x++){
-
-                if(data[i].id==productosSeleccionados[x]){
-                    data.splice(i, 1);
-                }
-            }
-        }
-
+        data = data.filter((producto, index) => {
+            return !productosSeleccionados.includes(String(index));
+        });
+    
         localStorage.setItem('producto', JSON.stringify(data));
         location.reload();
     })
@@ -72,19 +63,16 @@ $(function(){
     $(".comprar").click(function(){
         
         //RECORRE EL ARRAY DE SELECCIONADOS Y EL DE DATA SACANDO DE DATA LOS PRODUCTOS SELECCIONADOS
+        data = data.filter((producto, index) => {
+            return productosSeleccionados.includes(String(index));
+        });
+
+        //RECORRO EL ARRAY DE DATA Y VOY LLAMANDO A LA API Y COMPRANDO UN PRODUCTO
         for(let i=0;i<data.length;i++){
-
-            for(let x=0;x<productosSeleccionados.length;x++){
-
-                if(data[i].id!=productosSeleccionados[x]){
-                    data.splice(i, 1);
-
-                }
-            }
+            console.log(data[i]);
+            debugger;
+            console.log(tallaProducto[i]);
         }
-
-        console.log(productosSeleccionados);
-        console.log(tallaProducto);
 
         //localStorage.setItem('producto', JSON.stringify(data));
         //location.reload();
@@ -101,7 +89,7 @@ $(function(){
             //RECORRO LA DISPOSICION SEGUN EL DIA SELECCIONADO Y PINTA LAS MESAS EN SU NUEVA POSICION
             $.each(data, function(i,v){
                 
-                $("[name='talla']").append('<option value='+data[i].id+'>'+data[i].identificador+'</option>');
+                $("[name='talla']").append('<option id='+i+' value='+data[i].id+'>'+data[i].identificador+'</option>');
             })
 
         }).fail(function(){

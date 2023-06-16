@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Compra;
 use App\Entity\Jugador;
 use App\Entity\Partido;
 use App\Entity\Producto;
@@ -53,6 +54,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Producto', 'fa fa-gamepad', Producto::class),
             MenuItem::linkToCrud('Jugador', 'fa fa-stop', Jugador::class),
             MenuItem::linkToCrud('Partido', 'fa fa-stop', Partido::class),
+            MenuItem::linkToCrud('Compra', 'fa fa-stop', Compra::class),
             MenuItem::linkToCrud('Talla', 'fa fa-book', Talla::class),
         ];
     }

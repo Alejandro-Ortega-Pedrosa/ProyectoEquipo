@@ -38,19 +38,21 @@ $(function(){
 
             }).done(function(data){
 
+                var talla=data.identificador;
+
                 //LLAMO A LA API DE COMPRA Y SE REALIZA LA COMPRA
                 $.ajax( "http://localhost:8000/api/compra", 
                 {
-                    method:"GET",
+                    method:"POST",
                     dataType:"json",
                     data:{
                         producto: id,
-                        talla: data.identificador
+                        talla: talla
                     }
 
                 }).done(function(data){
 
-                    alert("Has comprado "+id+" de la talla "+data.identificador);
+                    alert("Has comprado "+id+" de la talla "+talla);
                 
                 }).fail(function(){
                     alert("ERROR")
@@ -70,7 +72,7 @@ $(function(){
 
 })
 
-//RELLENO EL SELECT CON LOS TRAMOS 
+//RELLENO EL SELECT CON LAS TALLAS
 function rellenarTallas(select){
     $.ajax( "http://localhost:8000/api/tallas", 
     {
@@ -78,7 +80,6 @@ function rellenarTallas(select){
         dataType:"json"
     }).done(function(data){
 
-        //RECORRO LA DISPOSICION SEGUN EL DIA SELECCIONADO Y PINTA LAS MESAS EN SU NUEVA POSICION
         $.each(data, function(i,v){
             
             select.append('<option value='+data[i].id+'>'+data[i].identificador+'</option>');
