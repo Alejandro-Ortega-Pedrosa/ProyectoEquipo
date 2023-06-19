@@ -101,8 +101,13 @@ use App\Entity\Producto;
             return $this->render('historia.html.twig');
             
         }
-
        
+        #[Route('/misCompras', name: 'misCompras')] 
+        public function misCompras():Response{
+
+            return $this->render('misCompras.html.twig');
+            
+        }
     }
 
     

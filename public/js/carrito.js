@@ -40,7 +40,6 @@ $(function(){
             //GUARDO EL ID DEL CHECK QUE ES EL INDICE
             productosSeleccionados.push($(this).prop("id"));
 
-
             tallaProducto.push($("[name='talla']").eq($(this).prop("id")).val());
         }else {
             productosSeleccionados=productosSeleccionados.filter(producto => producto != $(this).prop("id"));
@@ -63,19 +62,70 @@ $(function(){
     $(".comprar").click(function(){
         
         //RECORRE EL ARRAY DE SELECCIONADOS Y EL DE DATA SACANDO DE DATA LOS PRODUCTOS SELECCIONADOS
-        data = data.filter((producto, index) => {
+        valores = data.filter((producto, index) => {
             return productosSeleccionados.includes(String(index));
         });
 
         //RECORRO EL ARRAY DE DATA Y VOY LLAMANDO A LA API Y COMPRANDO UN PRODUCTO
-        for(let i=0;i<data.length;i++){
-            console.log(data[i]);
-            debugger;
-            console.log(tallaProducto[i]);
+        for(let i=0;i<valores.length;i++){
+            $.ajax( "http://localhost:8000/api/compra", 
+                {
+                    method:"POST",
+                    dataType:"json",
+                    data:{
+                        producto: valores[i].id,
+                        talla: tallaProducto[i],
+                    }
+
+                }).done(function(data){
+
+                   
+                            
+                }).fail(function(){
+                    alert("ERROR")
+                })
         }
 
-        //localStorage.setItem('producto', JSON.stringify(data));
-        //location.reload();
+        //PLANTILLA DE BORRADO
+        var plantilla=pintaPlantilla();
+                
+        //CARACTERISTICAS DEL MODAL
+        var jqPlantilla=$(plantilla);
+
+        jqPlantilla.dialog({
+            resizable: false,
+            height: "auto",
+            width: 400,
+            draggable: false,
+            modal: true,
+            buttons: {
+                Cancelar: function() {
+                    $( this ).dialog( "close" );
+                    location.reload();
+                }
+            }
+        });
+  
+        function pintaPlantilla(){
+
+            var plantilla=`
+            <form>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label>!SE HA REALIZADO LA COMPRA CORRECTAMENTE¡</label>
+                    </div>
+                </div>
+            </form>`
+        
+            return plantilla;
+        }
+
+        data = data.filter((producto, index) => {
+            return !productosSeleccionados.includes(String(index));
+        });
+
+
+        localStorage.setItem('producto', JSON.stringify(data));
     })
 
     //RELLENO EL SELECT CON LOS TRAMOS 
@@ -89,7 +139,7 @@ $(function(){
             //RECORRO LA DISPOSICION SEGUN EL DIA SELECCIONADO Y PINTA LAS MESAS EN SU NUEVA POSICION
             $.each(data, function(i,v){
                 
-                $("[name='talla']").append('<option id='+i+' value='+data[i].id+'>'+data[i].identificador+'</option>');
+                $("[name='talla']").append('<option id='+i+' value='+data[i].identificador+'>'+data[i].identificador+'</option>');
             })
 
         }).fail(function(){

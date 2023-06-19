@@ -52,8 +52,39 @@ $(function(){
 
                 }).done(function(data){
 
-                    alert("Has comprado "+id+" de la talla "+talla);
+                   //PLANTILLA DE BORRADO
+                    var plantilla=pintaPlantilla();
                 
+                    //CARACTERISTICAS DEL MODAL
+                    var jqPlantilla=$(plantilla);
+
+                    jqPlantilla.dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        draggable: false,
+                        modal: true,
+                        buttons: {
+                            Cancelar: function() {
+                            $( this ).dialog( "close" );
+                            }
+                        }
+                    });
+              
+                    function pintaPlantilla(){
+    
+                        var plantilla=`
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label>!SE HA REALIZADO LA COMPRA CORRECTAMENTE¡</label>
+                                </div>
+                            </div>
+                        </form>`
+                    
+                        return plantilla;
+                    }
+                            
                 }).fail(function(){
                     alert("ERROR")
                 })

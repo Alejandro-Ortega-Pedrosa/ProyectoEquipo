@@ -51,11 +51,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToRoute('Home', 'fa fa-home', 'index'),
         
             MenuItem::linkToCrud('Usuario', 'fa fa-user', User::class),
-            MenuItem::linkToCrud('Producto', 'fa fa-gamepad', Producto::class),
-            MenuItem::linkToCrud('Jugador', 'fa fa-stop', Jugador::class),
-            MenuItem::linkToCrud('Partido', 'fa fa-stop', Partido::class),
-            MenuItem::linkToCrud('Compra', 'fa fa-stop', Compra::class),
-            MenuItem::linkToCrud('Talla', 'fa fa-book', Talla::class),
+            MenuItem::linkToCrud('Jugador', 'fa fa-person-walking', Jugador::class),
+            MenuItem::linkToCrud('Producto', 'fa fa-shirt', Producto::class),
+            MenuItem::linkToCrud('Talla', 'fa fa-m', Talla::class),
+            MenuItem::linkToCrud('Partido', 'fa fa-futbol', Partido::class),
+            MenuItem::linkToCrud('Compra', 'fa fa-bag-shopping', Compra::class),
         ];
     }
 }

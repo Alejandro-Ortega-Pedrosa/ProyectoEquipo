@@ -42,10 +42,9 @@ $(function(){
     //PARA VER LOS ELEMENTOS DEL CARRITO
     $(".carrito").click(function(){
         
-        //GUARDA EL PRECIO Y LOS PRODUCTOS
+        //GUARDA LOS PRODUCTOS
         localStorage.setItem('producto', JSON.stringify(productos));
 
-        //localStorage.setItem('precio', JSON.stringify(precio));
 
     })
 
@@ -72,7 +71,6 @@ $(function(){
                     <div class="precio"></div>
                     <p class="stock text-danger"></p>
                     <p class="descripcion"></p>
-                    <a class="bg-secondary text-primary btn mt-2" href="#">Comprar</a>
 				</div>
 			</div>`
 
@@ -90,6 +88,12 @@ $(function(){
         }).fail(function(){
             alert("ERROR")
         })
+    })
+
+    $(".logout").click(function(){
+        const vaciar=[];
+
+        localStorage.setItem('producto', JSON.stringify(vaciar));
     })
 
     function actualizarCarrito(id){

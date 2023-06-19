@@ -20,6 +20,10 @@
     background-color: #d3b16f;
 }
 
+.btn-danger{
+    background-color: red;
+}
+
 .zonaE{
 
     color: white;
@@ -140,11 +144,11 @@ form ul{
 
 /*CAMBIA LAS PROPIEDADES DE LOS ELEMENTOS DE DATE TABLE*/
 .dataTables_filter input{
-    color: white;
+    color: #3c1352;
 }
 
 #idtabla_length select{
-    color: white;
+    color: #3c1352;
 }
 
 /*PARA COLUMNAS IMPARES DE LAS TABLAS*/

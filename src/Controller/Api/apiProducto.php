@@ -46,4 +46,25 @@ class apiProducto extends AbstractController
         //DEVUELVE EL JSON CON LOS DATOS DEL PRODUCTO
         return $this->json($data);
     }
+
+    //BORRA UN PRODUCTO DE LA BASE DE DATOS SEGUN SU ID
+    #[Route(path:'/producto/{id}', name:"producto_delete", methods:'DELETE')]
+    public function delete(int $id): Response
+    {
+        $entityManager = $this->doctrine->getManager();
+        //BUSCA EL PRODUCTO EN LA BASE DE DATOS
+        $producto = $entityManager->getRepository(Producto::class)->find($id);
+ 
+        //SI NO ENCUENTRA EL PRODUCTO DEVUELVE EL MENSAJE DE ERROR
+        if (!$producto) {
+            return $this->json('No encontrada con id' . $id, 404);
+        }
+ 
+        //BORRA EL PRODUCTO DE LA BASE DE DATOS
+        $entityManager->remove($producto);
+        $entityManager->flush();
+ 
+        //UNA VEZ BORRADO DEVUELVE EL MENSAJE DE QUR SE HA BORRADO CORRECTAMENTE
+        return $this->json('Se ha borrado con id ' . $id);
+    }
 }

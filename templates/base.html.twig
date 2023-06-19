@@ -52,9 +52,9 @@
         {% if app.user == null %}
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/historia" class="nav-item nav-link up-header">Historia</a>
+                <a href="/plantilla" class="nav-item nav-link up-header">Plantilla</a>
                 <a href="/partidos" class="nav-item nav-link up-header">Partidos</a>
                 <a href="/tienda" class="nav-item nav-link up-header">Tienda</a>
-                <a href="/plantilla" class="nav-item nav-link up-header">Plantilla</a>
                 <a href="/#registro" class="nav-item nav-link">REGISTRO</a>
                 <a href="/login" class="nav-item nav-link active">LOGIN</a>
                 
@@ -64,16 +64,17 @@
         {% if app.user != null %}
             {% if app.user.roles[0]=="ROLE_USER"%}
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="/partidos" class="nav-item nav-link up-header">Partidos</a>
+                    <a href="/historia" class="nav-item nav-link up-header">Historia</a>
                     <a href="/plantilla" class="nav-item nav-link up-header">Plantilla</a>
+                    <a href="/partidos" class="nav-item nav-link up-header">Partidos</a>
                     <a href="/tienda" class="nav-item nav-link up-header">Tienda</a>
                 </div>
             {% endif %}
             
             {% if app.user.roles[0]=="ROLE_ADMIN"%}
                 <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="/gestionProductosTabla" class="nav-item nav-link up-header">Productos</a>
                     <a href="/gestionJugadoresTabla" class="nav-item nav-link up-header">Jugadores</a>
+                    <a href="/gestionProductosTabla" class="nav-item nav-link up-header">Productos</a>
                     <a href="/admin" class="nav-item nav-link up-header">Easy Admin</a> 
                 </div>
             {% endif %}
@@ -82,9 +83,9 @@
                         <div class="dropdown-menu m-0">
                             <a href="#" class="dropdown-item">Mi Perfil</a>
                             {% if app.user.roles[0]=="ROLE_USER"%}
-                                <a href="/gestionMisCompras" class="dropdown-item">Mis Compras</a>
+                                <a href="/misCompras" class="dropdown-item">Mis Compras</a>
                             {% endif %}
-                            <a href="/logout" class="dropdown-item">Cerrar Sesión</a>
+                            <a href="/logout" class="dropdown-item logout">Cerrar Sesión</a>
                         </div>
                     </div>
                 </div>

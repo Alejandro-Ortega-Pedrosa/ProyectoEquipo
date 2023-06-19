@@ -39,9 +39,44 @@ class apiCompra extends AbstractController
         //LA GUARDO EN LA BASE DE DATOS
         $entityManager->persist($compra);
         $entityManager->flush();
+
+        //RESTO UN PRODUCTO DEL STOCK
+        $stock=$producto->getStock();
+        $stock=$stock-1;
+        $producto->setStock($stock);
+
+        $entityManager->persist($producto);
+        $entityManager->flush();
   
         return $this->json('Creada con id ' . $compra->getId());
     }
+
+    
+    //DEVUELVE UN JSON CON TODAS LAS COMPRAS DEL USUARIO ACTUAL
+    #[Route(path:'/compras', name:'compra_index', methods:'GET')]
+    public function index(): Response
+    {
+        //BUSCA TODAS LAS COMPRAS DEL USUARIO EN LA BD
+        $compras = $this->doctrine
+        ->getRepository(Compra::class)
+        ->findBy(array('usuario'=>$this->getUser()));
+ 
+        $data = [];
+ 
+        //METE TODAS LAS COMPRAS EN EL ARRAY DATA
+        foreach ($compras as $compra) {
+           $data[] = [
+                'id' => $compra->getId(),
+                'producto' => $compra->getProducto()->getNombre(),
+                'precio' => $compra->getProducto()->getPrecio(),
+                'talla' => $compra->getTalla(),
+           ];
+        }
+ 
+        //DEVUELVE EL JSON CON LAS COMPRAS
+        return $this->json($data);
+    }
+
 
       
 }
