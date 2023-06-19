@@ -7,6 +7,7 @@
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
+    use Symfony\Component\Security\Http\Attribute\IsGranted;
 
     class SesionController extends AbstractController
     {
@@ -18,9 +19,13 @@
 
         #[Route('/logout', name: 'app_logout', methods: 'GET')]
         public function logout(){
+
+            //CUANDO CIERRA SESION EN JS ESTÁ PROGRAMADO EL VACIADO DEL CARRITO
+
             throw new \Exception('Cierra Sesion');
         }
 
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/setAdmin/{id}', name: 'app_setAdmin')]
         public function admin(int $id):Response
         {

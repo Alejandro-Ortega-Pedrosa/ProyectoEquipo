@@ -11,6 +11,7 @@
     use Doctrine\Persistence\ManagerRegistry;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route(path:'/api', name:'api_')]
 class apiEntrada extends AbstractController

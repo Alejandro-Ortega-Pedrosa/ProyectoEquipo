@@ -7,7 +7,7 @@
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Doctrine\Persistence\ManagerRegistry;
-    
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route(path:'/api', name:'api_')]
 class apiProducto extends AbstractController
@@ -48,6 +48,7 @@ class apiProducto extends AbstractController
     }
 
     //BORRA UN PRODUCTO DE LA BASE DE DATOS SEGUN SU ID
+    #[IsGranted('ROLE_ADMIN')] 
     #[Route(path:'/producto/{id}', name:"producto_delete", methods:'DELETE')]
     public function delete(int $id): Response
     {

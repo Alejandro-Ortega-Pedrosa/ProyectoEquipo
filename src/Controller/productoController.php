@@ -22,7 +22,7 @@
         }
        
         //FORMULARIO PARA CREAR UN PRODUCTO NUEVO
-        //#[IsGranted('ROLE_ADMIN')] 
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionProductosForm', name: 'gestionProductosForm')] 
         public function gestionProductosForm(Request $request,  EntityManagerInterface $em, SluggerInterface $slugger):Response{
 
@@ -70,7 +70,7 @@
         }
 
         //FORMULARIO PARA EDITAR UN PRODUCTO SEGUN SU ID
-        //#[IsGranted('ROLE_ADMIN')] 
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionProductosEditForm/{id}', name: 'gestionProductosEditForm')] 
         public function gestionProductosEditForm(int $id, Request $request, SluggerInterface $slugger, EntityManagerInterface $em):Response{
 
@@ -123,15 +123,15 @@
         }
 
         //SE BORRA UN PRODUCTO SEGUN SU ID
-        //#[IsGranted('ROLE_ADMIN')] 
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionProductosDelete/{id}', name: 'gestionProductosDelete')] 
         public function gestionProductosDelete(int $id):Response{
 
             $entityManager = $this->doctrine->getManager();
-            //BUSCA EL JUEGO EN LA BASE DE DATOS
+            //BUSCA EL PRODUCTO EN LA BASE DE DATOS
             $producto = $entityManager->getRepository(Producto::class)->find($id);
     
-            //BORRA EL JUEGO DE LA BASE DE DATOS
+            //BORRA EL PRODUCTO DE LA BASE DE DATOS
             $entityManager->remove($producto);
             $entityManager->flush();
  
@@ -141,11 +141,11 @@
         }
 
         //TABLA DE PRODUCTOS
-        //#[IsGranted('ROLE_ADMIN')] 
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionProductosTabla', name: 'gestionProductosTabla')] 
         public function gestionProductosTabla(Request $request, PaginatorInterface $paginator):Response{
     
-            //BUSCA TODAS LAS MESAS DE LA BD
+            //BUSCA TODAS LAS PRODUCTOS DE LA BD
             $productos = $this->doctrine
                 ->getRepository(Producto::class)
                 ->findAll();

@@ -9,6 +9,7 @@
     use Symfony\Component\Routing\Annotation\Route;
     use Doctrine\Persistence\ManagerRegistry;
     use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route(path:'/api', name:'api_')]
 class apiCompra extends AbstractController
@@ -20,6 +21,7 @@ class apiCompra extends AbstractController
     }
 
     //CREA UNA NUEVA COMPRA SEGUN LOS DATOS PASADOS POR POST
+    #[IsGranted('ROLE_USER')] 
     #[Route(path:'/compra', name:"compra_new", methods:'POST')]
     public function new(Request $request): Response
     {
@@ -53,6 +55,7 @@ class apiCompra extends AbstractController
 
     
     //DEVUELVE UN JSON CON TODAS LAS COMPRAS DEL USUARIO ACTUAL
+    #[IsGranted('ROLE_USER')] 
     #[Route(path:'/compras', name:'compra_index', methods:'GET')]
     public function index(): Response
     {

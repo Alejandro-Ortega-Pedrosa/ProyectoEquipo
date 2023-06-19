@@ -7,7 +7,7 @@
     use Symfony\Component\HttpFoundation\Response;
     use Symfony\Component\Routing\Annotation\Route;
     use Doctrine\Persistence\ManagerRegistry;
-    
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route(path:'/api', name:'api_')]
 class apiPartido extends AbstractController

@@ -81,7 +81,6 @@
                 <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{app.user.nombre}}</a>
                         <div class="dropdown-menu m-0">
-                            <a href="#" class="dropdown-item">Mi Perfil</a>
                             {% if app.user.roles[0]=="ROLE_USER"%}
                                 <a href="/misCompras" class="dropdown-item">Mis Compras</a>
                             {% endif %}

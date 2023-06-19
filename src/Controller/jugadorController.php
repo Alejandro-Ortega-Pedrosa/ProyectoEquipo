@@ -20,12 +20,12 @@
         
         }
        
-        //FORMULARIO PARA CREAR UN PRODUCTO NUEVO
-        //#[IsGranted('ROLE_ADMIN')] 
+        //FORMULARIO PARA CREAR UN JUGADOR NUEVO
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionJugadoresForm', name: 'gestionJugadoresForm')] 
         public function gestionJugadoresForm(Request $request,  EntityManagerInterface $em, SluggerInterface $slugger):Response{
 
-            //SE CREA EL NUEVO PRODUCTO
+            //SE CREA EL NUEVO JUGADOR
             $jugador = new Jugador();
     
             //SE CREA EL FORM
@@ -57,7 +57,7 @@
                     $jugador->setFoto($newFilename);
                 }
 
-                //GUARDA EL PRODUCTO EN LA BD
+                //GUARDA EL JUGADOR EN LA BD
                 $em->persist($jugador);
                 $em->flush();
                 
@@ -68,12 +68,12 @@
 
         }
 
-        //FORMULARIO PARA EDITAR UN PRODUCTO SEGUN SU ID
-        //#[IsGranted('ROLE_ADMIN')] 
+        //FORMULARIO PARA EDITAR UN JUGADOR SEGUN SU ID
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionJugadoresEditForm/{id}', name: 'gestionJugadoresEditForm')] 
-        public function gestionProductosEditForm(int $id, Request $request, SluggerInterface $slugger, EntityManagerInterface $em):Response{
+        public function gestionJugadoresEditForm(int $id, Request $request, SluggerInterface $slugger, EntityManagerInterface $em):Response{
 
-            //BUSCA EL PRODUCTO POR SU ID EN LA BD
+            //BUSCA EL JUGADOR POR SU ID EN LA BD
             $jugador = $this->doctrine
             ->getRepository(Jugador::class)
             ->find($id);
@@ -106,11 +106,11 @@
                     $jugador->setFoto($newFilename);
                 }
 
-                //SE GUARDA EL PRODUCTO EN LA BD
+                //SE GUARDA EL JUGADOR EN LA BD
                 $em->persist($jugador);
                 $em->flush();
 
-                //SE PINTA LA TABLA DE PRODUCTOS
+                //SE PINTA LA TABLA DE JUGADORES
                 return $this->redirect($this->generateUrl('gestionJugadoresTabla'));
             }
 
@@ -121,16 +121,16 @@
 
         }
 
-        //SE BORRA UN PRODUCTO SEGUN SU ID
-        //#[IsGranted('ROLE_ADMIN')] 
+        //SE BORRA UN JUGADOR SEGUN SU ID
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionJugadoresDelete/{id}', name: 'gestionJugadoresDelete')] 
-        public function gestionProductosDelete(int $id):Response{
+        public function gestionJugadoresDelete(int $id):Response{
 
             $entityManager = $this->doctrine->getManager();
-            //BUSCA EL JUEGO EN LA BASE DE DATOS
+            //BUSCA EL JUGADOR EN LA BASE DE DATOS
             $jugador = $entityManager->getRepository(Jugador::class)->find($id);
     
-            //BORRA EL JUEGO DE LA BASE DE DATOS
+            //BORRA EL JUGADOR DE LA BASE DE DATOS
             $entityManager->remove($jugador);
             $entityManager->flush();
  
@@ -139,12 +139,12 @@
 
         }
 
-        //TABLA DE PRODUCTOS
-        //#[IsGranted('ROLE_ADMIN')] 
+        //TABLA DE JUGADORES
+        #[IsGranted('ROLE_ADMIN')] 
         #[Route('/gestionJugadoresTabla', name: 'gestionJugadoresTabla')] 
         public function gestionJugadoresTabla(Request $request, PaginatorInterface $paginator):Response{
     
-            //BUSCA TODAS LAS MESAS DE LA BD
+            //BUSCA TODAS LOS JUGADORES DE LA BD
             $jugadores = $this->doctrine
                 ->getRepository(Jugador::class)
                 ->findAll();
@@ -154,7 +154,7 @@
             $jugadores,
             //DEFINE LOS PARAMETROS
             $request->query->getInt('page', 1),
-            //PRODUCTOS POR PAGINA
+            //JUGADORES POR PAGINA
             5
             );
                    
